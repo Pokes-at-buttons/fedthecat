@@ -1,0 +1,35 @@
+body {
+    color: #fff;
+    background-color: black;
+}
+
+
+/* LINKS AND NAV */
+
+nav ul {
+    list-style: none;
+    display: block;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 1rem 2rem;
+}
+
+nav ul a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 1px solid red;
+}
+
+nav ul a:visited {
+    color: #fff;
+}
+
+
+/* FORM STYLES */
+
+form input {
+    display: block;
+}
