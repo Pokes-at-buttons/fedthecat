@@ -2,7 +2,7 @@
 
 Because your cat will absolutely lie to your face about being fed.
 
-FeedTracker3000 is a small web app to help households track who's fed which cat, when — so you can avoid overfeeding, underfeeding, or falling for feline manipulation.
+Have You Fed The Cat? is a small web app to help households track who's fed which cat, when — so you can avoid overfeeding, underfeeding, or falling for feline manipulation.
 
 ---
 
