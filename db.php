@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("host", "username", "password", "db");
+$mysqli = new mysqli("localhost", "tim5", "tim", "catfeed");
 if ($mysqli->connect_errno) { // Connect_errno is a property of the mysqli object that contains the error code if the connection fails.
     die("Connection failed: " . $mysqli->connect_error);
 }

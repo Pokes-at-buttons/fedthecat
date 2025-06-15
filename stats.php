@@ -45,10 +45,12 @@ ORDER BY c.id
         $cats[] = $row;
     }
 
-    echo ("<pre>");
-    echo (print_r($cats, true));
-    echo ("<br /");
-    echo ("</pre>");
+    // Table with Columns Cat Name, Fed At time, Time since last feed, Fed By, Notes
+
+
+
+    echo (build_latest_cat_stats_table($cats));
+
 
     ?>
 
