@@ -3,6 +3,17 @@ body {
     background-color: black;
 }
 
+/* Uncomment the following for white mode - Or if you're a  masochist. */
+/* body {
+    color: #000;
+    background-color: #fff;
+}
+
+body nav ul a,
+body nav ul a:visited {
+    color: #000;
+} */
+
 
 /* LINKS AND NAV */
 
