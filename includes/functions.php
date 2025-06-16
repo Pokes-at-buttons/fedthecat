@@ -1,6 +1,12 @@
 <?php
+// Safety First
 
-function sanitize_text_inputs($data) {
+/**
+ * Trim, strip slashes, and convert special characters to HTML Entities
+ * @param string $data 
+ * @return string 
+ */
+function sanitize_text_inputs(string $data): string {
     // Trim whitespace from the beginning and end
     $data = trim($data);
     // Remove backslashes
@@ -9,7 +15,11 @@ function sanitize_text_inputs($data) {
     $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
     return $data;
 }
-
+/**
+ * 
+ * @param mixed $test 
+ * @return bool 
+ */
 function check_for_number($test) {
     if (is_numeric($test)) {
         return true;
@@ -18,7 +28,12 @@ function check_for_number($test) {
     }
 }
 
-function get_all_cats($mysqli) {
+/**
+ * Returns array of cats
+ * @param object $mysqli 
+ * @return array 
+ */
+function get_all_cats(object $mysqli): array {
 
     // search db for cat details
     $query = "SELECT * FROM cats";
@@ -36,7 +51,7 @@ function get_all_cats($mysqli) {
 }
 
 // Log feed data to database
-function log_a_feed_to_db(array $feed_data, $mysqli) {
+function log_a_feed_to_db(array $feed_data, object $mysqli) {
     if (!is_array($feed_data)) {
         return false; // Error, this needs an array.
     }

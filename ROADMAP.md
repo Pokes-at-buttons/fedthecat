@@ -14,12 +14,13 @@ This started as a simple “have they been fed?” tracker and is now evolving i
 - [x] Record who did the feeding (blame accountability)
 - [x] Optional notes (“with meds”, “refused wet food”, “ate like a goblin”)
 - [x] View recent feedings in a nice, readable table
-- [x] See “last fed” summary for each cat
+- [ ] See “last fed” summary for each cat
 
 ---
 
 ## 🔜 Next Steps (v1.1 – v1.2)
 
+- [ ] Make it pretty! I'll add some styling and think about UX concerns
 - [ ] Add basic stats (e.g. who feeds the most, how often they beg, who eats the most)
 - [ ] Filter log by individual claw-floof
 - [ ] CSV export (for those who want a spreadsheet of shame)
