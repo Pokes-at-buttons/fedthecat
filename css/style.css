@@ -3,6 +3,24 @@ body {
     background-color: black;
 }
 
+div#container {
+    width: 75%;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    flex-flow: row-reverse;
+}
+
+div#log-a-feed,
+div#latest-cat-stats-div {
+    margin: 0 auto;
+}
+
+div#log-a-feed {
+    border: 1px solid white;
+    padding: 1rem;
+}
+
 /* Uncomment the following for light mode - Or if you're a  masochist. */
 /* body {
     color: #000;
@@ -16,6 +34,13 @@ body nav ul a:visited {
 
 
 /* LINKS AND NAV */
+
+nav {
+    width: 75%;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+}
 
 nav ul {
     list-style: none;
@@ -74,4 +99,16 @@ table#time-since-feeding-table td {
 
     border: 1px solid blue;
 
+}
+
+table#latest-cat-stats,
+table#latest-cat-stats td,
+table#latest-cat-stats th {
+    border: 1px solid #fff;
+    border-collapse: collapse;
+}
+
+table#latest-cat-stats td,
+table#latest-cat-stats th {
+    padding: 1rem;
 }
