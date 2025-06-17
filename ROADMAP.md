@@ -25,7 +25,7 @@ This started as a simple “have they been fed?” tracker and is now evolving i
 - [ ] Filter log by individual claw-floof
 - [ ] CSV export (for those who want a spreadsheet of shame)
 - [ ] Make the whole thing look decent on mobile
-- [ ] Optional PIN or login to stop freeloading housemates fiddling with the log
+- [ ] Login and user sign up to stop freeloading housemates fiddling with the log
 
 ---
 
@@ -35,7 +35,7 @@ This started as a simple “have they been fed?” tracker and is now evolving i
 
 
 - [ ] Raspberry Pi integration via IFTTT
-  - A physical button near each food bowl to log a feed - How would this log the feeder?
+  - A physical button near each food bowl to log a feed - How would this log the feeder? AI assisted camera?
   - A tiny display showing when each cat was last fed
   - Optional “You just ate, mate” LED warning system
 
