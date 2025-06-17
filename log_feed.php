@@ -10,7 +10,6 @@ if (isset($_POST)) {
     $cats = $_POST['cats'];
 }
 
-echo (print_r($_POST));
 
 // Put relevant $_POST data into array
 

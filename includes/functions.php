@@ -96,10 +96,10 @@ function display_cat_selectors(array $cats_arr): string {
     $html = '';
 
 
-    $html .= "<label for='cats[]'>Which cat(s)?</label><br>";
+    $html .= "<label for='cats[]'>Which cat(s)?</label>";
     foreach ($cats_arr as $cat) {
 
-        $html .= "$cat[name]<br><input type='checkbox' name='cats[]' value='$cat[id]'>";
+        $html .= "$cat[name]<input type='checkbox' name='cats[]' value='$cat[id]'>";
     }
 
     return $html;
@@ -133,9 +133,17 @@ function build_latest_cat_stats_table(array $cats_array): string {
 
     foreach ($ready_cats_array as $cats) {
         $html_latest_cat_stats .= "<tr>";
-        foreach ($cats as $cat_entry) {
+
+        foreach ($cats as $key => $cat_entry) {
 
 
+
+
+            if ($key == 'fed_at') {
+
+                $cat_entry =  date_and_time_format($cats['fed_at']);
+                // echo ($cat_entry);
+            }
             // Build table headers
 
             $html_latest_cat_stats .= "<td>$cat_entry</td>";
@@ -193,4 +201,54 @@ function get_keys_for_headers(array $the_cats_array): array {
 
 
     return $header_keys;
+}
+
+
+// 
+/**
+ * Get the cats and last fed from tables cats, feed_log, and feed_log_cats
+ * @param object $mysqli The mysql object
+ * @return array Array of cats and their feeding stats
+ */
+
+function get_cat_last_fed_stats(object $mysqli) {
+    $query = "SELECT
+    c.id AS cat_id,
+    c.name AS cat_name,
+    f.id AS feed_log_id,
+    f.human_name AS human_name,
+    f.note,
+    f.fed_at
+FROM cats c
+JOIN feed_log_cats flc ON c.id = flc.cat_id
+JOIN feed_log f ON flc.feed_log_id = f.id
+JOIN (
+    SELECT
+        flc.cat_id,
+        MAX(f.fed_at) AS last_fed_at
+    FROM feed_log_cats flc
+    JOIN feed_log f ON flc.feed_log_id = f.id
+    GROUP BY flc.cat_id
+) latest ON latest.cat_id = c.id AND latest.last_fed_at = f.fed_at
+ORDER BY c.id
+";
+
+    $result = $mysqli->query($query);
+    // error_log(print_r($result, true));
+    if (!$result) {
+        die("Query failed: " . $mysqli->error);
+    }
+
+    $cats = [];
+
+    while ($row = $result->fetch_assoc()) { // fetch_assoc will fetch as an associative array
+        $cats[] = $row;
+    }
+    return $cats;
+}
+
+function date_and_time_format(string $date_time) {
+
+    $date_formatted =  date('d M Y, H:i', strtotime($date_time));
+    return $date_formatted;
 }
