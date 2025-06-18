@@ -3,35 +3,36 @@ body {
     background-color: black;
 }
 
+/*  Text etc */
+
+h3 {
+    margin-block-start: 0em;
+    margin-block-end: .5em;
+}
+
 div#container {
     width: 75%;
     margin: 1rem auto;
     display: flex;
     align-items: center;
     flex-flow: row-reverse;
+    padding: 1rem;
 }
 
 div#log-a-feed,
 div#latest-cat-stats-div {
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: flex-start;
+    padding-top: 1rem;
 }
 
 div#log-a-feed {
     border: 1px solid white;
     padding: 1rem;
 }
-
-/* Uncomment the following for light mode - Or if you're a  masochist. */
-/* body {
-    color: #000;
-    background-color: #fff;
-}
-
-body nav ul a,
-body nav ul a:visited {
-    color: #000;
-} */
-
 
 /* LINKS AND NAV */
 

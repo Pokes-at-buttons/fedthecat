@@ -120,7 +120,6 @@ function build_latest_cat_stats_table(array $cats_array): string {
     // Get the keys to make headers
     $cat_stats_headers = get_keys_for_headers($ready_cats_array);
 
-
     // Begin Table
     $html_latest_cat_stats .= '<table id="latest-cat-stats"><tr>';
 
@@ -136,16 +135,12 @@ function build_latest_cat_stats_table(array $cats_array): string {
 
         foreach ($cats as $key => $cat_entry) {
 
-
-
-
             if ($key == 'fed_at') {
 
                 $cat_entry =  date_and_time_format($cats['fed_at']);
-                // echo ($cat_entry);
             }
-            // Build table headers
 
+            // Build table headers
             $html_latest_cat_stats .= "<td>$cat_entry</td>";
         }
         $html_latest_cat_stats .= "</tr>";

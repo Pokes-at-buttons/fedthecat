@@ -6,7 +6,7 @@ function itsBeenThisLong(dateTime = null, cats) {
     }
     // Get current date and time
     let currentDateTime = new Date;
-
+    // 
     //  Convert the provided dateTime string to a Date object
     // Assuming dateTime is in the format 'YYYY-MM-DD HH:MM:SS'
     let fedDateTime = new Date(dateTime); // fedDateTime is in milliseconds since epoch.
@@ -67,10 +67,14 @@ function getCatsFromBackEnd() {
         method: 'GET',
         credentials: 'same-origin'
     })
-        .then(res => res.text())
-        .then(html => {
+        .then(res => res.json())
+        .then(data => {
             // do something
-            console.log(html);
+            console.log("in then");
+            console.log(data);
+            loopCats(data);
+            itsBeenThisLong('2025-06-11 16:05:49', data);
+            // return data;
         })
         .catch(error => {
             console.error('AJAX Error:', error);
@@ -78,7 +82,17 @@ function getCatsFromBackEnd() {
 
 }
 
+// loop over cats and call it's been this long
 
+function loopCats(catsArray) {
+
+    catsArray.forEach(currentCat => {
+
+        console.log("looping through cat: " + currentCat);
+
+    });
+
+}
 
 /**  Wrap  JS calls in a DOMContentLoaded event so they run after the page is loaded else you get errors telling you odds and sods don't exist. 
  * It's like asking the painter to wait until the house has been built before he tries to paint the non existent walls. 
@@ -86,8 +100,8 @@ function getCatsFromBackEnd() {
  */
 
 document.addEventListener('DOMContentLoaded', function () {
-    let cats = getCatsFromBackEnd();
-    itsBeenThisLong('2025-06-11 16:05:49', cats);
+    getCatsFromBackEnd();
 
+    // itsBeenThisLong('2025-06-11 16:05:49', cats);
 
 });

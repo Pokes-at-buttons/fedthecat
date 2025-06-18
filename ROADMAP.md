@@ -16,6 +16,8 @@ This started as a simple “have they been fed?” tracker and is now evolving i
 - [x] View recent feedings in a nice, readable table
 - [ ] See “last fed” summary for each cat
 
+![The Doctor (Who) says, 'Can you hurry up, please, or I\'ll hit you with my shoe.'"](images/lets-move-this-along.gif)
+
 ---
 
 ## 🔜 Next Steps (v1.1 – v1.2)
