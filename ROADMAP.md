@@ -37,7 +37,7 @@ This started as a simple “have they been fed?” tracker and is now evolving i
 
 
 - [ ] Raspberry Pi integration via IFTTT
-  - A physical button near each food bowl to log a feed - How would this log the feeder? AI assisted camera?
+  - A physical button near each food bowl to log a feed - How would this log the feeder? AI assisted camera? No that's over engineering. Just use a touch screen interface mounted near food bowls. A virtual physical button then.
   - A tiny display showing when each cat was last fed
   - Optional “You just ate, mate” LED warning system
 
