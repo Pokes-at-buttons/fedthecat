@@ -1,4 +1,4 @@
-function itsBeenThisLong(dateTime = null, cats) {
+function itsBeenThisLong(dateTime = null, cat) {
 
     if (!dateTime) {
         console.error('No dateTime provided');
@@ -29,23 +29,21 @@ function itsBeenThisLong(dateTime = null, cats) {
     const diffDays = Math.floor(timeDifference / (1000 * 60 * 60 * 24)); // 24 hours in a day
 
 
-    console.log(`Difference: ${diffDays} days, ${diffHours % 24} hours, ${diffMinutes % 60} minutes, `);
+    // Return a single object
+    return {
+        catName: cat,
+        days: diffDays,
+        hours: diffHours % 24,
+        minutes: diffMinutes % 60
+    };
 
-    // Bundle into array and return it.
-    let timeDiffArray = [
-        { label: 'Days', value: diffDays },
-        { label: 'Hours', value: diffHours % 24 },
-        { label: 'Minutes', value: diffMinutes % 60 },
-        // { label: 'Seconds', value: diffSeconds % 60 }
-    ];
-    // return the time difference array
-    console.log(timeDiffArray);
-    return timeDiffArray;
+
 
 
 }
 
-function createATable(targetDivId, dataArray = null) {
+function createATable(targetDivId, dataArray) {
+    console.log(dataArray);
     // Get Container Div
     let containerDiv = document.getElementById(targetDivId);
     if (!containerDiv) {
@@ -55,6 +53,12 @@ function createATable(targetDivId, dataArray = null) {
     let theTable = document.createElement('table');
     theTable.id = targetDivId + '-table';
     containerDiv.appendChild(theTable);
+
+    let sinceFedData = dataArray;
+    sinceFedData.forEach(item => {
+        console.log(item.catName, item.days, item.hours, item.minutes);
+    });
+
 
     return theTable.id;
 }
@@ -67,13 +71,13 @@ function getCatsFromBackEnd() {
         method: 'GET',
         credentials: 'same-origin'
     })
-        .then(res => res.json())
-        .then(data => {
+        .then(res => res.json()) // parse the response as JSON. 
+        .then(data => { // data is now the parsed JSON object
             // do something
-            console.log("in then");
-            console.log(data);
-            loopCats(data);
-            itsBeenThisLong('2025-06-11 16:05:49', data);
+
+            let timeSinceFed = loopCats(data);
+
+            createATable('time-since-feeding', timeSinceFed);
             // return data;
         })
         .catch(error => {
@@ -82,16 +86,13 @@ function getCatsFromBackEnd() {
 
 }
 
-// loop over cats and call it's been this long
+// loop over cats and call it's been this long on each
 
 function loopCats(catsArray) {
 
-    catsArray.forEach(currentCat => {
-
-        console.log("looping through cat: " + currentCat);
-
-    });
-
+    return catsArray.map(currentCat =>
+        itsBeenThisLong(currentCat.fed_at, currentCat.cat_name)
+    );
 }
 
 /**  Wrap  JS calls in a DOMContentLoaded event so they run after the page is loaded else you get errors telling you odds and sods don't exist. 
